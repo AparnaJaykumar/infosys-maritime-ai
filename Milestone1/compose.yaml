@@ -1,0 +1,15 @@
+services:
+  portwise:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      # Intentionally localhost-only. Use an HTTPS reverse proxy for public access.
+      - "127.0.0.1:8501:8501"
+    volumes:
+      - portwise_data:/data
+    security_opt:
+      - no-new-privileges:true
+
+volumes:
+  portwise_data:
