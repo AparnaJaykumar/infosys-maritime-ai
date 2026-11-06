@@ -1,0 +1,360 @@
+<div class="fq-exact-page" id="top"><style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,600;0,700;1,500;1,600&display=swap');
+
+:root {
+    --fq-teal: #0F766E;
+    --fq-teal-dark: #115E59;
+    --fq-teal-light: #1F9690;
+    --fq-mint: #BFE6E1;
+    --fq-teal-soft: #E6F4F2;
+    --fq-ink: #1E293B;
+    --fq-body: #475569;
+    --fq-muted: #64748B;
+    --fq-border: #E2E8F0;
+    --fq-bg: #F4F8FB;
+    --fq-navy: #071C26;
+    --fq-cta-bg: #EAF5F3;
+}
+
+html { scroll-behavior: smooth; }
+
+/* Streamlit reset: full width, no sidebar/header, no gaps */
+section[data-testid="stSidebar"],
+div[data-testid="stSidebarCollapsedControl"],
+header[data-testid="stHeader"] { display: none !important; }
+.stApp { background: var(--fq-bg) !important; }
+.block-container, div[data-testid="stMainBlockContainer"] {
+    max-width: 100% !important; padding: 0 !important; margin: 0 !important;
+}
+div[data-testid="stVerticalBlock"] { gap: 0 !important; }
+div[data-testid="stMarkdownContainer"] { margin: 0 !important; }
+div[data-testid="stElementContainer"] { margin: 0 !important; }
+/* hide the little "link" icon Streamlit adds next to headings */
+[data-testid="stHeaderActionElements"], a.stHeadingAction { display: none !important; }
+
+.fq-landing, .fq-landing * { box-sizing: border-box; }
+.fq-landing {
+    font-family: 'Source Sans 3', -apple-system, 'Segoe UI', sans-serif;
+    color: var(--fq-body); line-height: 1.6;
+}
+.fq-landing a, .fq-landing a:hover { text-decoration: none !important; }
+.fq-landing section[id] { scroll-margin-top: 90px; }
+.fq-container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Header (white bar, one row, melts into the photo) ---------- */
+div[data-testid="stHorizontalBlock"]:has(.st-key-top_btn_login) {
+    background: #fff;
+    border-bottom: none;
+    padding: 14px max(24px, calc((100% - 1180px) / 2 + 24px)) !important;
+    align-items: center !important;
+    gap: 12px !important;
+    position: sticky; top: 0; z-index: 999;
+    box-shadow: 0 1px 0 rgba(226, 232, 240, 0.7);
+}
+.fq-brand { display: flex; align-items: center; gap: 12px; color: var(--fq-ink) !important; }
+.fq-brand-icon {
+    width: 42px; height: 42px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--fq-teal-dark), var(--fq-teal-light));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 14px; font-weight: 700;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.30);
+}
+.fq-brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.fq-brand-name { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--fq-ink); }
+.fq-brand-sub { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fq-teal); font-weight: 600; }
+.fq-nav-links { display: flex; justify-content: center; align-items: center; gap: 34px; height: 44px; }
+.fq-nav-link { color: var(--fq-body) !important; font-size: 15px; font-weight: 500; }
+.fq-nav-link:hover { color: var(--fq-teal) !important; }
+
+/* Buttons (header, middle call to action, final call to action) */
+.st-key-top_btn_login button, .st-key-mid_btn_login button, .st-key-cta_btn_login button {
+    background: linear-gradient(135deg, var(--fq-teal-dark) 0%, var(--fq-teal-light) 100%) !important;
+    border: none !important; border-radius: 10px !important;
+    height: 44px !important; min-height: 44px !important;
+    box-shadow: 0 6px 16px rgba(15, 118, 110, 0.28) !important;
+}
+.st-key-top_btn_login button p, .st-key-mid_btn_login button p, .st-key-cta_btn_login button p {
+    color: #fff !important; font-weight: 600 !important; font-size: 15px !important;
+}
+.st-key-top_btn_signup button, .st-key-mid_btn_signup button, .st-key-cta_btn_signup button {
+    background: #fff !important; border: 1px solid var(--fq-border) !important;
+    border-radius: 10px !important; height: 44px !important; min-height: 44px !important;
+}
+.st-key-top_btn_signup button p, .st-key-mid_btn_signup button p, .st-key-cta_btn_signup button p {
+    color: var(--fq-ink) !important; font-weight: 600 !important; font-size: 15px !important;
+}
+.st-key-top_btn_signup button:hover, .st-key-mid_btn_signup button:hover, .st-key-cta_btn_signup button:hover { border-color: var(--fq-teal) !important; }
+.st-key-top_btn_signup button:hover p, .st-key-mid_btn_signup button:hover p, .st-key-cta_btn_signup button:hover p { color: var(--fq-teal) !important; }
+
+/* ---------- Hero: photo fades into the header above and the stats bar below ---------- */
+.fq-hero {
+    position: relative; width: 100%;
+    aspect-ratio: 1600 / 780;
+    min-height: 560px; max-height: 820px;
+    display: flex; align-items: center;
+    background-color: #1B7F88;
+    background-size: cover; background-position: 80% center; background-repeat: no-repeat;
+    overflow: hidden;
+}
+.fq-hero-shade {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(3, 40, 52, 0.62) 0%, rgba(3, 40, 52, 0.32) 34%, rgba(3, 40, 52, 0) 58%);
+}
+.fq-hero-fade-top {
+    position: absolute; left: 0; right: 0; top: 0; height: 130px;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.65) 35%, rgba(255,255,255,0) 100%);
+}
+.fq-hero-fade-bottom {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 170px;
+    background: linear-gradient(0deg, #fff 0%, rgba(255,255,255,0.7) 35%, rgba(255,255,255,0) 100%);
+}
+.fq-hero-content { position: relative; z-index: 2; width: 100%; padding-bottom: 36px; }
+.fq-hero-text { max-width: 470px; }
+
+.fq-hero-pill {
+    display: inline-block; padding: 6px 14px; border-radius: 999px;
+    background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.45);
+    backdrop-filter: blur(6px);
+    font-size: 13px; font-weight: 600; color: #fff !important; margin-bottom: 20px;
+}
+.fq-landing .fq-hero-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: clamp(36px, 3.7vw, 54px); font-weight: 600; line-height: 1.08;
+    letter-spacing: -0.025em; margin: 0 0 20px 0;
+    color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 2px 18px rgba(0, 40, 50, 0.45);
+    animation: fqRise 0.9s ease-out both;
+}
+.fq-landing .fq-hero-title span, .fq-landing .fq-hero-title em {
+    color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
+}
+.fq-landing .fq-hero-title em { font-style: italic; color: #CFF3EE !important; -webkit-text-fill-color: #CFF3EE !important; }
+.fq-landing .fq-hero-desc {
+    font-size: 19px; max-width: 440px; margin: 0;
+    color: #ffffff !important; -webkit-text-fill-color: #ffffff !important;
+    text-shadow: 0 1px 10px rgba(0, 40, 50, 0.5);
+}
+@keyframes fqRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .fq-landing .fq-hero-title { animation: none; } }
+
+/* Stats bar under the hero: full width, 4 equal centred cells */
+.fq-facts { background: #fff; border-bottom: none; }
+.fq-facts-grid { display: grid; grid-template-columns: repeat(4, 1fr); max-width: 1180px; margin: 0 auto; }
+.fq-fact { padding: 24px 16px 26px; text-align: center; border-left: 1px solid var(--fq-border); }
+.fq-fact:first-child { border-left: none; }
+.fq-fact-num { font-size: 25px; font-weight: 700; color: var(--fq-teal); line-height: 1.15; }
+.fq-fact-label { font-size: 14px; color: var(--fq-muted); margin-top: 4px; }
+
+/* ---------- Sections: no hard lines, every section melts into the next ---------- */
+.fq-section { padding: 80px 0; background: transparent; }
+.fq-section-tight { padding-bottom: 36px; }
+.fq-section-compact { padding: 64px 0; }
+.fq-section-alt {
+    background: linear-gradient(180deg, var(--fq-bg) 0%, #ffffff 22%, #ffffff 78%, var(--fq-bg) 100%);
+    border: none;
+}
+/* the first section after the white stats bar fades from white into the page colour */
+#preview { background: linear-gradient(180deg, #ffffff 0%, var(--fq-bg) 160px); }
+
+.fq-section-header { max-width: 640px; margin: 0 0 40px 0; }
+.fq-section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 38px; font-weight: 600; color: var(--fq-ink);
+    letter-spacing: -0.01em; line-height: 1.2; margin: 0 0 12px 0;
+}
+.fq-section-subtitle { font-size: 17px; margin: 0; }
+.fq-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.fq-card {
+    background: #fff; border: 1px solid var(--fq-border);
+    border-radius: 16px; padding: 28px;
+    transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.fq-card:hover { border-color: var(--fq-teal-light); box-shadow: 0 10px 28px rgba(15, 118, 110, 0.10); transform: translateY(-2px); }
+.fq-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    background: var(--fq-teal-soft); color: var(--fq-teal);
+    display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+}
+.fq-card-title { font-size: 18px; font-weight: 700; color: var(--fq-ink); margin: 0 0 6px 0; }
+.fq-card-desc { font-size: 15px; margin: 0; }
+.fq-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.fq-step { border-top: 3px solid var(--fq-teal); padding-top: 18px; }
+.fq-step-num { font-weight: 700; color: var(--fq-teal); font-size: 14px; margin-bottom: 6px; }
+
+/* ---------- Product preview ---------- */
+.fq-preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.fq-preview-grid .fq-section-header { margin-bottom: 24px; }
+.fq-bullets { display: flex; flex-direction: column; gap: 14px; }
+.fq-bullet { display: flex; gap: 12px; align-items: flex-start; font-size: 16px; color: var(--fq-body); }
+.fq-bullet-tick {
+    flex: 0 0 24px; width: 24px; height: 24px; border-radius: 50%;
+    background: var(--fq-teal-soft); color: var(--fq-teal);
+    display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.fq-quote {
+    background: #fff; border: 1px solid var(--fq-border); border-radius: 18px;
+    box-shadow: 0 24px 60px rgba(15, 60, 70, 0.13);
+    padding: 22px 24px 18px; width: 100%; max-width: 500px; margin-left: auto;
+}
+.fq-quote-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.fq-quote-tag {
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--fq-teal); background: var(--fq-teal-soft); padding: 4px 10px; border-radius: 999px;
+}
+.fq-quote-status { font-size: 12.5px; color: var(--fq-muted); }
+.fq-quote-route { display: flex; align-items: center; gap: 14px; padding: 6px 0 12px; }
+.fq-quote-city small { display: block; font-size: 12px; color: var(--fq-muted); }
+.fq-quote-city b { font-size: 17px; color: var(--fq-ink); font-weight: 700; }
+.fq-quote-city.right { text-align: right; }
+.fq-quote-line {
+    flex: 1; height: 2px;
+    background: repeating-linear-gradient(90deg, var(--fq-teal-light) 0 6px, transparent 6px 12px);
+}
+.fq-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.fq-chip { font-size: 12.5px; background: #F1F5F9; color: var(--fq-body); padding: 4px 10px; border-radius: 999px; }
+.fq-quote-block { font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fq-muted); margin: 14px 0 8px; }
+.fq-carrier { display: grid; grid-template-columns: 78px 1fr 70px; gap: 10px; align-items: center; font-size: 13.5px; padding: 4px 0; color: var(--fq-ink); }
+.fq-carrier span:last-child { text-align: right; color: var(--fq-muted); font-size: 12.5px; }
+.fq-bar { height: 7px; background: #E8EEF3; border-radius: 99px; overflow: hidden; }
+.fq-bar i { display: block; height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--fq-teal-dark), var(--fq-teal-light)); }
+.fq-price { display: flex; justify-content: space-between; font-size: 14px; padding: 4px 0; color: var(--fq-body); }
+.fq-price b { color: var(--fq-ink); font-weight: 600; }
+.fq-price-total {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-top: 10px; padding-top: 12px; border-top: 1px solid var(--fq-border);
+    font-size: 15px; font-weight: 700; color: var(--fq-ink);
+}
+.fq-price-total b { font-size: 24px; color: var(--fq-teal); }
+.fq-quote-foot { margin-top: 12px; font-size: 12px; color: var(--fq-muted); text-align: center; }
+
+/* ---------- Middle call to action (after How it works) ---------- */
+.fq-mid-cta { text-align: center; margin-top: 52px; }
+.fq-landing .fq-mid-cta-title {
+    font-family: 'Source Serif 4', Georgia, serif; font-size: 26px; font-weight: 600;
+    color: var(--fq-ink) !important; -webkit-text-fill-color: var(--fq-ink) !important;
+    text-align: center !important; margin: 0 0 6px 0 !important;
+}
+.fq-landing .fq-mid-cta-desc { font-size: 16px; text-align: center !important; margin: 0 auto !important; max-width: 480px; }
+div[data-testid="stHorizontalBlock"]:has(.st-key-mid_btn_login) {
+    background: var(--fq-bg);
+    padding: 4px 24px 12px 24px !important;
+    margin: 0 !important;
+    gap: 16px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* ---------- FAQ ---------- */
+.fq-faq { max-width: 800px; }
+.fq-faq-item { background: #fff; border: 1px solid var(--fq-border); border-radius: 12px; margin-bottom: 12px; overflow: hidden; }
+.fq-faq-summary {
+    padding: 18px 22px; font-size: 16px; font-weight: 600; color: var(--fq-ink);
+    cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;
+}
+.fq-faq-summary::-webkit-details-marker { display: none; }
+.fq-faq-item[open] .fq-faq-summary svg { transform: rotate(180deg); }
+.fq-faq-content { padding: 0 22px 18px 22px; font-size: 15px; }
+
+/* ---------- Final call-to-action: faded ship photo + text + buttons in ONE band ---------- */
+.fq-cta {
+    position: relative; overflow: hidden;
+    padding: 84px 0 36px 0; text-align: center;
+    background: linear-gradient(180deg, var(--fq-bg) 0%, var(--fq-cta-bg) 100%);
+}
+.fq-cta::before {
+    content: ""; position: absolute; inset: 0;
+    background-size: cover; background-position: 72% 62%; background-repeat: no-repeat;
+    opacity: 0.17; filter: saturate(0.85); pointer-events: none;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 62%, transparent 100%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 38%, #000 62%, transparent 100%);
+}
+.fq-cta .fq-container { position: relative; z-index: 1; }
+.fq-landing .fq-cta-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 38px; font-weight: 600; line-height: 1.2;
+    color: var(--fq-ink) !important; -webkit-text-fill-color: var(--fq-ink) !important;
+    text-align: center !important; margin: 0 0 12px 0 !important;
+}
+.fq-landing .fq-cta-desc {
+    font-size: 17px; text-align: center !important;
+    max-width: 520px; margin: 0 auto !important; color: var(--fq-body);
+}
+div[data-testid="stHorizontalBlock"]:has(.st-key-cta_btn_login) {
+    background: var(--fq-cta-bg);
+    padding: 0 24px 84px 24px !important;
+    margin: 0 !important;
+    gap: 16px !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+.fq-footer {
+    padding: 40px 0 32px; text-align: center; font-size: 14px; color: var(--fq-muted);
+    background: linear-gradient(180deg, var(--fq-cta-bg) 0%, #ffffff 100%);
+    border: none;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+    .fq-preview-grid { grid-template-columns: 1fr; gap: 36px; }
+    .fq-quote { margin: 0 auto; }
+}
+@media (max-width: 900px) {
+    .fq-nav-links { display: none; }
+    .fq-hero { min-height: 520px; background-position: 75% center; }
+    .fq-hero-text { max-width: 100%; }
+    .fq-facts-grid { grid-template-columns: 1fr 1fr; }
+    .fq-fact:nth-child(odd) { border-left: none; }
+    .fq-fact:nth-child(-n+2) { border-bottom: 1px solid var(--fq-border); }
+    .fq-grid-3 { grid-template-columns: 1fr 1fr; }
+    .fq-steps { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+    /* header: logo on its own row, the two buttons side by side below it */
+    div[data-testid="stHorizontalBlock"]:has(.st-key-top_btn_login) { flex-wrap: wrap !important; position: static; }
+    div[data-testid="stHorizontalBlock"]:has(.st-key-top_btn_login) > div:nth-child(1) { flex: 1 1 100% !important; min-width: 100% !important; }
+    div[data-testid="stHorizontalBlock"]:has(.st-key-top_btn_login) > div:nth-child(2) { display: none !important; }
+    div[data-testid="stHorizontalBlock"]:has(.st-key-top_btn_login) > div:nth-child(n+3) { flex: 1 1 calc(50% - 8px) !important; min-width: calc(50% - 8px) !important; }
+    /* call-to-action rows: hide the spacer columns, stack the buttons */
+    div[data-testid="stHorizontalBlock"]:has(.st-key-mid_btn_login) > div:nth-child(1),
+    div[data-testid="stHorizontalBlock"]:has(.st-key-mid_btn_login) > div:nth-child(4),
+    div[data-testid="stHorizontalBlock"]:has(.st-key-cta_btn_login) > div:nth-child(1),
+    div[data-testid="stHorizontalBlock"]:has(.st-key-cta_btn_login) > div:nth-child(4) { display: none !important; }
+    div[data-testid="stHorizontalBlock"]:has(.st-key-mid_btn_login),
+    div[data-testid="stHorizontalBlock"]:has(.st-key-cta_btn_login) { flex-direction: column !important; align-items: center !important; }
+    div[data-testid="stHorizontalBlock"]:has(.st-key-mid_btn_login) > div,
+    div[data-testid="stHorizontalBlock"]:has(.st-key-cta_btn_login) > div { width: 100% !important; max-width: 340px; flex: 0 0 auto !important; }
+    .fq-hero { min-height: 480px; }
+    .fq-grid-3, .fq-steps { grid-template-columns: 1fr; }
+    .fq-section-title, .fq-landing .fq-cta-title { font-size: 30px; }
+    .fq-section { padding: 56px 0; }
+    .fq-section-compact { padding: 48px 0; }
+    .fq-carrier { grid-template-columns: 70px 1fr 62px; }
+}
+
+
+/* FreightQuote website: restored original typography and photography. */
+#app:has(.fq-exact-page){display:block!important;height:auto!important;min-height:100vh;overflow:visible;background:#fff}
+.fq-exact-page{width:100%;overflow:hidden;min-height:100vh;background:#fff}
+.fq-exact-page .fq-exact-header{position:sticky;top:0;z-index:300;background:#fff;box-shadow:0 1px 0 rgba(226,232,240,.75)}
+.fq-exact-page .fq-header-inner{display:grid;grid-template-columns:auto minmax(270px,1fr) auto;align-items:center;gap:34px;padding-top:15px;padding-bottom:15px}
+.fq-exact-page .fq-nav-links{display:flex!important;align-items:center;justify-content:center;gap:32px;height:auto!important;white-space:nowrap}
+.fq-exact-page .fq-header-inner>.fq-brand{margin:0;min-width:0;display:flex}
+.fq-exact-page .fq-head-actions,.fq-exact-page .fq-cta-buttons{display:flex;align-items:center;gap:12px}
+.fq-exact-page .fq-head-actions button,.fq-exact-page .fq-cta-buttons button{font-family:'Source Sans 3',sans-serif;cursor:pointer;font-size:14px;font-weight:650;border-radius:10px;padding:10px 22px;min-height:44px;transition:transform .18s,box-shadow .18s}
+.fq-exact-page .fq-access-login{background:linear-gradient(120deg,#0f766e,#1c9e94);border:1px solid #0f766e;color:#fff;box-shadow:0 8px 20px #0f766e24}
+.fq-exact-page .fq-access-create{background:#fff;border:1px solid #e2e8f0;color:#1e293b}
+.fq-exact-page .fq-access-create:hover{border-color:#0f766e;color:#0f766e}
+.fq-exact-page .fq-head-actions button:hover,.fq-exact-page .fq-cta-buttons button:hover{transform:translateY(-2px)}
+.fq-exact-page .fq-hero{background-image:url('/static/ship.jpg')!important;background-size:cover!important;background-position:80% center!important}
+.fq-exact-page .fq-cta::before{background-image:url('/static/ship.jpg')!important;opacity:.12;filter:saturate(.8)}
+.fq-exact-page .fq-cta-buttons{justify-content:center;padding:10px 20px 55px;background:#eaf5f3}
+.fq-exact-page .fq-cta-buttons button{min-width:174px}
+.fq-exact-page .fq-nav-link:hover{color:#0f766e!important}
+@media(max-width:980px){.fq-exact-page .fq-header-inner{gap:16px;grid-template-columns:auto auto}.fq-exact-page .fq-nav-links{grid-column:1/-1;grid-row:2;justify-content:center;overflow-x:auto;gap:24px;padding-bottom:4px}.fq-exact-page .fq-head-actions{justify-self:end}.fq-exact-page .fq-hero{background-position:67% center!important}}
+@media(max-width:590px){.fq-exact-page .fq-header-inner{padding:12px 14px;gap:10px}.fq-exact-page .fq-brand-name{font-size:16px}.fq-exact-page .fq-brand-sub{font-size:8px}.fq-exact-page .fq-brand-icon{width:34px;height:34px}.fq-exact-page .fq-head-actions button{padding:8px 10px;font-size:12px}.fq-exact-page .fq-nav-links{justify-content:flex-start;width:100%;font-size:13px}.fq-exact-page .fq-hero{background-position:69% center!important;min-height:550px}.fq-exact-page .fq-hero-text{max-width:90%}}
+@media(prefers-reduced-motion:reduce){.fq-exact-page *, .fq-exact-page *::before{animation-duration:.01ms!important;scroll-behavior:auto!important}}
+</style><header class="fq-landing fq-exact-header"><div class="fq-container fq-header-inner">
+<a aria-label="FreightQuote AI home" class="fq-brand" href="#/"><div class="fq-brand-icon">FQ</div><div class="fq-brand-text"><span class="fq-brand-name">FreightQuote AI</span><span class="fq-brand-sub">Freight intelligence</span></div></a>
+<nav aria-label="Main navigation" class="fq-nav-links"><a class="fq-nav-link" href="#platform">Platform</a><a class="fq-nav-link" href="#how-it-works">How it works</a><a class="fq-nav-link" href="#security">Security</a><a class="fq-nav-link" href="#faq">FAQ</a></nav>
+<div class="fq-head-actions"><button class="fq-access-login" type="button">Log in</button><button class="fq-access-create" type="button">Create account</button></div>
+</div></header><div class="fq-landing"><section class="fq-hero"><div class="fq-hero-shade"></div><div class="fq-hero-fade-top"></div><div class="fq-hero-fade-bottom"></div><div class="fq-container fq-hero-content"><div class="fq-hero-text"><div class="fq-hero-pill">Freight intelligence, connected</div><div aria-level="1" class="fq-hero-title" role="heading"><span>A world in motion.</span><br/><em>A smarter way forward.</em></div><div class="fq-hero-desc">Plan ocean routes, compare carriers and build accurate freight quotes in one connected workspace.</div></div></div></section><div class="fq-facts"><div class="fq-facts-grid"><div class="fq-fact"><div class="fq-fact-num">6 AI agents</div><div class="fq-fact-label">Working on every quote</div></div><div class="fq-fact"><div class="fq-fact-num">7 steps</div><div class="fq-fact-label">From request to final quote</div></div><div class="fq-fact"><div class="fq-fact-num">Plain English</div><div class="fq-fact-label">Ask the AI Copilot anything</div></div><div class="fq-fact"><div class="fq-fact-num">Secure sign-in</div><div class="fq-fact-label">Hashed passwords, signed sessions</div></div></div></div></div><div class="fq-landing"><section class="fq-section" id="preview"><div class="fq-container"><div class="fq-preview-grid"><div><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">See a quote come together</div><div class="fq-section-subtitle">Route, carrier, weather and pricing agents each add their part, and you get one clear breakdown.</div></div><div class="fq-bullets"><div class="fq-bullet"><span class="fq-bullet-tick"><svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Route and transit time checked automatically</span></div><div class="fq-bullet"><span class="fq-bullet-tick"><svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Carriers ranked on reliability and on-time performance</span></div><div class="fq-bullet"><span class="fq-bullet-tick"><svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" viewbox="0 0 24 24" width="14"><polyline points="20 6 9 17 4 12"></polyline></svg></span><span>Fuel adjustment and margin priced in, with compliance notes</span></div></div></div><div><div class="fq-quote"><div class="fq-quote-head"><span class="fq-quote-tag">Sample quote</span><span class="fq-quote-status">Ready to review</span></div><div class="fq-quote-route"><div class="fq-quote-city"><small>From</small><b>Mundra, IN</b></div><div class="fq-quote-line"></div><div class="fq-quote-city right"><small>To</small><b>Rotterdam, NL</b></div></div><div class="fq-chips"><span class="fq-chip">1 x 40 ft container</span><span class="fq-chip">About 22 days</span><span class="fq-chip">Weather risk: low</span></div><div class="fq-quote-block">Carrier ranking</div><div class="fq-carrier"><span>Carrier A</span><div class="fq-bar"><i style="width:94%"></i></div><span>94% on time</span></div><div class="fq-carrier"><span>Carrier B</span><div class="fq-bar"><i style="width:89%"></i></div><span>89% on time</span></div><div class="fq-carrier"><span>Carrier C</span><div class="fq-bar"><i style="width:83%"></i></div><span>83% on time</span></div><div class="fq-quote-block">Price breakdown</div><div class="fq-price"><span>Ocean freight</span><b>$1,850</b></div><div class="fq-price"><span>Fuel (bunker) adjustment</span><b>$210</b></div><div class="fq-price"><span>Port and documentation</span><b>$180</b></div><div class="fq-price"><span>Margin (6%)</span><b>$134</b></div><div class="fq-price-total"><span>Total</span><b>$2,374</b></div><div class="fq-quote-foot">Illustrative figures for demonstration only.</div></div></div></div></div></section></div><div class="fq-landing"><section class="fq-section fq-section-alt" id="platform"><div class="fq-container"><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">Everything you need to quote freight</div><div class="fq-section-subtitle">Specialised agents work together so every quote is fast and consistent.</div></div><div class="fq-grid-3"><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><div class="fq-card-title">AI Copilot</div><div class="fq-card-desc">Ask freight questions in plain language and get answers from your data.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></div><div class="fq-card-title">Route AI</div><div class="fq-card-desc">Plan sea routes with distance and transit time estimates.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><line x1="12" x2="12" y1="1" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div><div class="fq-card-title">Spot Quotes</div><div class="fq-card-desc">Track spot rates and bunker adjustments across trade lanes.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg></div><div class="fq-card-title">Carrier Ranking</div><div class="fq-card-desc">Compare carriers on reliability and on-time performance.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path></svg></div><div class="fq-card-title">Weather Risk</div><div class="fq-card-desc">See storm and seasonal risks along every route.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg></div><div class="fq-card-title">Margin and Customs</div><div class="fq-card-desc">Apply margins and check customs requirements before you quote.</div></div></div></div></section></div><div class="fq-landing"><section class="fq-section fq-section-tight" id="how-it-works"><div class="fq-container"><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">From request to quote in four steps</div></div><div class="fq-steps"><div class="fq-step"><div class="fq-step-num">Step 1</div><div class="fq-card-title">Submit your request</div><div class="fq-card-desc">Enter ports, container type and departure date.</div></div><div class="fq-step"><div class="fq-step-num">Step 2</div><div class="fq-card-title">Agents assess the route</div><div class="fq-card-desc">Route, carrier and weather agents review your shipment.</div></div><div class="fq-step"><div class="fq-step-num">Step 3</div><div class="fq-card-title">Pricing is calculated</div><div class="fq-card-desc">Freight, fuel adjustment and margin are priced together.</div></div><div class="fq-step"><div class="fq-step-num">Step 4</div><div class="fq-card-title">Review the quote</div><div class="fq-card-desc">See the full breakdown and compliance notes.</div></div></div><div class="fq-mid-cta"><div aria-level="3" class="fq-mid-cta-title" role="heading">Try it on your own shipment</div><div class="fq-mid-cta-desc">Create an account in a minute and build your first quote.</div></div></div></section></div><div class="fq-landing fq-cta-buttons"><button class="fq-access-login" type="button">Log in</button><button class="fq-access-create" type="button">Create account</button></div><div class="fq-landing"><section class="fq-section fq-section-alt" id="who-for"><div class="fq-container"><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">Built for people who move cargo</div><div class="fq-section-subtitle">Whether you quote, ship or analyse freight, the workspace fits the way you work.</div></div><div class="fq-grid-3"><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div><div class="fq-card-title">Freight forwarders</div><div class="fq-card-desc">Turn customer enquiries into accurate quotes faster, with carrier comparison and margin built in.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" x2="12" y1="22.08" y2="12"></line></svg></div><div class="fq-card-title">Shippers and exporters</div><div class="fq-card-desc">Check routes, transit times and likely costs before you commit to a booking.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><line x1="18" x2="18" y1="20" y2="10"></line><line x1="12" x2="12" y1="20" y2="4"></line><line x1="6" x2="6" y1="20" y2="14"></line></svg></div><div class="fq-card-title">Logistics analysts</div><div class="fq-card-desc">Ask the AI Copilot about rates and trade lanes in plain language and get answers from your data.</div></div></div></div></section></div><div class="fq-landing"><section class="fq-section fq-section-compact" id="security"><div class="fq-container"><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">Your account stays protected</div><div class="fq-section-subtitle">Sign-in security is built in from the start.</div></div><div class="fq-grid-3"><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div><div class="fq-card-title">Encrypted passwords</div><div class="fq-card-desc">Passwords are hashed with bcrypt and never stored in plain text.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg></div><div class="fq-card-title">Secure sessions</div><div class="fq-card-desc">Signed JWT tokens keep you signed in safely.</div></div><div class="fq-card"><div class="fq-icon"><svg fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div><div class="fq-card-title">Email verification</div><div class="fq-card-desc">Six-digit codes confirm your email and help you recover access.</div></div></div></div></section></div><div class="fq-landing"><section class="fq-section fq-section-alt" id="faq"><div class="fq-container"><div class="fq-section-header"><div aria-level="2" class="fq-section-title" role="heading">Frequently asked questions</div></div><div class="fq-faq"><details class="fq-faq-item"><summary class="fq-faq-summary"><span>What is FreightQuote AI?</span><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="fq-faq-content">A freight workspace where AI agents plan routes, compare carriers and price ocean freight quotes.</div></details><details class="fq-faq-item"><summary class="fq-faq-summary"><span>Do I need to enter payment details?</span><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="fq-faq-content">No. This is a demonstration project and no payment details are collected.</div></details><details class="fq-faq-item"><summary class="fq-faq-summary"><span>What is the difference between User and Admin accounts?</span><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="fq-faq-content">Users work with quotes and the Copilot. Admins can also manage registered users and unlock accounts.</div></details><details class="fq-faq-item"><summary class="fq-faq-summary"><span>How do I recover my password?</span><svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="18"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="fq-faq-content">Answer your security question or request a six-digit code sent to your registered email.</div></details></div></div></section></div><div class="fq-landing"><section class="fq-cta"><div class="fq-container"><div aria-level="2" class="fq-cta-title" role="heading">Ready to get started?</div><div class="fq-cta-desc">Log in to your workspace or create an account in a minute.</div></div></section></div><div class="fq-landing fq-cta-buttons"><button class="fq-access-login" type="button">Log in</button><button class="fq-access-create" type="button">Create account</button></div><div class="fq-landing"><footer class="fq-footer"><div class="fq-container">FreightQuote AI · Infosys Springboard Virtual Internship 7.0, Team 02</div></footer></div></div>
